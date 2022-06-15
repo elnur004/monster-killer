@@ -7,8 +7,19 @@ let currentPlayerLife = chosenMaxLife;
 adjustHealthBars(chosenMaxLife);
 
 function attackHandler() {
-    const damage = dealMonsterDamage(ATTACK_VALUE);
-    currentMonsterLife -= damage;
+    const monsterDamage = dealMonsterDamage(ATTACK_VALUE);
+    currentMonsterLife -= monsterDamage;
+
+    const playerDamage = dealPlayerDamage(ATTACK_VALUE);
+    currentPlayerLife -= playerDamage;
+
+    if(currentMonsterLife <= 0 && currentPlayerLife > 0) {
+        console.log('You won!');
+    } else if(currentMonsterLife > 0 && currentPlayerLife <= 0) {
+        console.log('Monster won!');
+    } else if(currentMonsterLife <= 0 && currentPlayerLife <= 0) {
+        console.log('You have a draw!');
+    }
 }
 
 attackBtn.addEventListener('click', attackHandler);
