@@ -38,17 +38,38 @@ function writeToLog(event, value, playerHealth, monsterHealth) {
     finalPlayerHealth: playerHealth,
     finalMonsterHealth: monsterHealth,
   };
-  if (event === LOG_PLAYER_ATTACK) {
-    logEntry.target = 'MONSTER';
-  } else if (event === LOG_PLAYER_STRONG_ATTACK) {
-    logEntry.target = 'MONSTER';
-  } else if (event === LOG_MONSTER_ATTACK) {
-    logEntry.target = 'PLAYER';
-  } else if (event === LOG_PLAYER_HEAL) {
-    logEntry.target = 'PLAYER';
-  } else if (event === LOG_GAME_OVER) {
-    logEntry;
+
+  switch (event) {
+    case LOG_PLAYER_ATTACK:
+      logEntry.target = 'MONSTER';
+      break;
+    case LOG_PLAYER_STRONG_ATTACK:
+      logEntry.target = 'MONSTER';
+      break;
+    case LOG_MONSTER_ATTACK:
+      logEntry.target = 'PLAYER';
+      break;
+    case LOG_PLAYER_HEAL:
+      logEntry.target = 'PLAYER';
+      break;
+    case LOG_GAME_OVER:
+      logEntry;
+      break;
+    default:
+      logEntry = {};
   }
+
+  // if (event === LOG_PLAYER_ATTACK) {
+  //   logEntry.target = 'MONSTER';
+  // } else if (event === LOG_PLAYER_STRONG_ATTACK) {
+  //   logEntry.target = 'MONSTER';
+  // } else if (event === LOG_MONSTER_ATTACK) {
+  //   logEntry.target = 'PLAYER';
+  // } else if (event === LOG_PLAYER_HEAL) {
+  //   logEntry.target = 'PLAYER';
+  // } else if (event === LOG_GAME_OVER) {
+  //   logEntry;
+  // }
   battleLog.push(logEntry);
 }
 
