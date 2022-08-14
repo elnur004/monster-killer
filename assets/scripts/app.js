@@ -30,7 +30,6 @@ let hasBonusLife = true;
 adjustHealthBars(chosenMaxLife);
 
 const battleLog = [];
-
 function writeToLog(event, value, playerHealth, monsterHealth) {
   let logEntry = {
     event: event,
@@ -168,8 +167,18 @@ function printLogHandler() {
   // for (let i = 0; i < battleLog.length; i++) {
   //   console.log(battleLog[i]);
   // }
-  for (const el of battleLog) {
-    console.log(el);
+  // for (const el of battleLog) {
+  //   console.log(el);
+  // }
+
+  let i = 0;
+  for (const logEntry of battleLog) {
+    console.log(`#${i}`);
+    i++;
+    for (const key in logEntry) {
+      console.table(`${key}: ${logEntry[key]}`);
+    }
+    console.log('--------------------------------------------');
   }
 }
 
